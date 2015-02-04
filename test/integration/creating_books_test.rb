@@ -5,7 +5,11 @@ class CreatingBooksTest < ActionDispatch::IntegrationTest
     post '/books', {
                      book: {
                          title: 'Pragmatic Programmer',
-                         rating: 5
+                         rating: 5,
+                         author: 'Dave Thomas',
+                         genre_id: 1,
+                         review: 'Excellent book for a programmer',
+                         amazon_id: '12324'
                      }
                  }.to_json, {
              'Accept' => 'application/json',
@@ -19,6 +23,10 @@ class CreatingBooksTest < ActionDispatch::IntegrationTest
 
     assert_equal 'Pragmatic Programmer', book[:title]
     assert_equal 5, book[:rating].to_i
+    assert_equal 'Dave Thomas', book[:author]
+    assert_equal 1, book[:genre_id].to_i
+    assert_equal 'Excellent book for a programmer', book[:review]
+    assert_equal '12324', book[:amazon_id]
   end
 
   test 'does not create book with invalid data' do
