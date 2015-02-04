@@ -95,7 +95,7 @@ App.Book = DS.Model.extend({
     genre: DS.belongsTo('genre', { async: true }),
 
     url: function() {
-        return "http://www.amazon.com/gp/product/"+this.get('amazon_id')+"/adamfortuna-20";
+        return "http://www.amazon.com/gp/product/"+this.get('amazon_id');
     }.property('amazon_id'),
     image: function() {
         return "http://images.amazon.com/images/P/"+this.get('amazon_id')+".01.ZTZZZZZZ.jpg";
